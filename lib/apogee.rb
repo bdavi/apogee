@@ -1,4 +1,6 @@
-require "apogee/version"
+# frozen_string_literal: true
+
+require 'apogee/version'
 
 module Apogee
   class Error < StandardError; end

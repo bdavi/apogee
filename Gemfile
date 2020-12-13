@@ -1,7 +1,24 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-# Specify your gem's dependencies in apogee.gemspec
+source 'https://rubygems.org'
+
+gem 'rake'
+
+group :development do
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rake'
+  gem 'rubocop-rspec'
+  gem 'rubycritic'
+end
+
+group :test do
+  gem 'simplecov'
+end
+
+group :development, :test do
+  gem 'byebug'
+  gem 'rspec', '~> 3.0'
+end
+
 gemspec
-
-gem "rake", "~> 12.0"
-gem "rspec", "~> 3.0"
