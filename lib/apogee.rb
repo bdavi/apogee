@@ -5,6 +5,7 @@ require 'apogee/installer'
 require 'apogee/file_helpers'
 require 'apogee/cli'
 require 'apogee/image_processor'
+require 'apogee/css_processor'
 
 module Apogee
   class Error < StandardError; end

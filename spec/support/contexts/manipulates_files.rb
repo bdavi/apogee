@@ -31,4 +31,13 @@ RSpec.shared_context 'with file manipulation' do
   def file?(*segments)
     File.file?(File.join(*segments))
   end
+
+  def make_file(*segments, content: '')
+    path = File.join(*segments)
+    IO.write(path, content)
+  end
+
+  def file_contents(*segments)
+    IO.read(File.join(*segments))
+  end
 end
