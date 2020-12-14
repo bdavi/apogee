@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+gem uninstall apogee
+gem build apogee.gemspec
+gem install apogee-0.1.0.gem

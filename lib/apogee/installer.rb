@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-require_relative 'file_helpers'
+require 'fileutils'
+require 'apogee'
 
 module Apogee
   # Creates an empty apogee site
   class Installer
-    VALID_FILENAME_PATTERN = /\A[A-Za-z0-9-_]+\z/.freeze
+    VALID_FILENAME_PATTERN = /\A[A-Za-z0-9\-_]+\z/.freeze
     FILES_WITH_SITE_NAME = [
       'README.md',
       File.join('src', 'pages', 'index.html')

@@ -101,7 +101,7 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.3)
-    test-prof (0.12.2)
+    thor (1.0.1)
     thread_safe (0.3.6)
     tty-which (0.4.2)
     unicode-display_width (1.7.0)
@@ -125,7 +125,7 @@ DEPENDENCIES
   rubocop-rspec
   rubycritic
   simplecov
-  test-prof
+  thor
 
 BUNDLED WITH
    2.1.4
