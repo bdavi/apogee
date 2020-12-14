@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
+require_relative 'builder_helpers'
+
 module Apogee
   # Processes site css for distribution
   class CSSProcessor
-    def css?
-      file_paths.any?
-    end
+    include BuilderHelpers
 
     def process
       return unless css?
@@ -15,12 +15,8 @@ module Apogee
 
     private
 
-    def file_paths
-      Dir[File.join('src', 'css', '**', '*.css')]
-    end
-
     def processed_styles
-      file_paths.map { |path| IO.read(path) }.join("\n")
+      css_paths.map { |path| IO.read(path) }.join("\n")
     end
 
     def out_path

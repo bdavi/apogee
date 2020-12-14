@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
+require_relative 'builder_helpers'
+
 module Apogee
   # Processes site js for distribution
   class JSProcessor
-    def js?
-      file_paths.any?
-    end
+    include BuilderHelpers
 
     def process
       return unless js?
@@ -15,12 +15,8 @@ module Apogee
 
     private
 
-    def file_paths
-      Dir[File.join('src', 'javascript', '**', '*.js')]
-    end
-
     def processed_js
-      file_paths.map { |path| IO.read(path) }.join("\n")
+      js_paths.map { |path| IO.read(path) }.join("\n")
     end
 
     def out_path

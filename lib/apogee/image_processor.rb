@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
+require_relative 'builder_helpers'
+
 module Apogee
   # Processes site images for distribution
   class ImageProcessor
-    def images?
-      Dir[File.join('src', 'images', '**', '*.*')].any?
-    end
+    include Apogee::BuilderHelpers
 
     def process
       return unless images?
