@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'apogee/builder'
 require 'apogee/builder_helpers'
 require 'apogee/cli'
 require 'apogee/css_processor'
