@@ -19,5 +19,20 @@ module Apogee
     def new(site_name)
       Installer.new(site_name).install
     end
+
+    desc 'build', 'Builds the site for preview or distribution'
+    long_desc <<~LONGDESC
+      `apogee build` will builds the site for preview or distribution.
+
+      WARNING: THIS WILL OVERWRITE THE CONTENTS OF THE `/dist` DIRECTORY.
+
+      The working files in `/src` are compiled into `/dist`.
+
+      Example:
+      \x5> apogee build
+    LONGDESC
+    def build
+      Builder.new.build
+    end
   end
 end

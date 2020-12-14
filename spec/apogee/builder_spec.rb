@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe Apogee::Builder do
+  include_context 'with example site'
+
   describe '#build' do
     it 'runs each processor' do
       css_proceessor = instance_double('CSSProcessor')
@@ -10,8 +12,18 @@ RSpec.describe Apogee::Builder do
       expect(image_proceessor).to receive(:process)
 
       builder = described_class.new(processors: [css_proceessor, image_proceessor])
-
       builder.build
+    end
+
+    it 'empties the `dist` directory before processing' do
+      with_example_site('builder_empties_dist') do
+        touch('dist', 'abc.txt')
+
+        builder = described_class.new(processors: [])
+        builder.build
+
+        expect(file?('dist', 'abc.txt')).to be false
+      end
     end
   end
 end

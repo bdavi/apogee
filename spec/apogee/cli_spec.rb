@@ -12,4 +12,16 @@ RSpec.describe Apogee::CLI do
       cli.new('abc123')
     end
   end
+
+  describe '#build' do
+    it 'builds the site' do
+      builder = instance_double('Builder')
+      cli = described_class.new
+
+      allow(Apogee::Builder).to receive(:new).and_return(builder)
+      expect(builder).to receive(:build)
+
+      cli.build
+    end
+  end
 end

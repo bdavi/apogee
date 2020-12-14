@@ -19,7 +19,13 @@ module Apogee
     end
 
     def build
+      prepare_dist_dir
       processors.each(&:process)
+    end
+
+    def prepare_dist_dir
+      FileUtils.rm_rf('dist')
+      FileUtils.mkdir('dist')
     end
   end
 end
