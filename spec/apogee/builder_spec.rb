@@ -5,14 +5,16 @@ RSpec.describe Apogee::Builder do
 
   describe '#build' do
     it 'runs each processor' do
-      css_proceessor = instance_double('CSSProcessor')
-      image_proceessor = instance_double('ImageProcessor')
+      with_example_site('builder_runs_each_processor') do
+        css_proceessor = instance_double('CSSProcessor')
+        image_proceessor = instance_double('ImageProcessor')
 
-      expect(css_proceessor).to receive(:process)
-      expect(image_proceessor).to receive(:process)
+        expect(css_proceessor).to receive(:process)
+        expect(image_proceessor).to receive(:process)
 
-      builder = described_class.new(processors: [css_proceessor, image_proceessor])
-      builder.build
+        builder = described_class.new(processors: [css_proceessor, image_proceessor])
+        builder.build
+      end
     end
 
     it 'empties the `dist` directory before processing' do
