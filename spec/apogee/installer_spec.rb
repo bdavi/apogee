@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'byebug'
-
 RSpec.describe Apogee::Installer do
   include_context 'with file manipulation'
 

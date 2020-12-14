@@ -15,4 +15,20 @@ RSpec.shared_context 'with file manipulation' do
   def temp_dir
     File.join(Dir.pwd, 'spec', 'tmp')
   end
+
+  def mkdir(*segments)
+    FileUtils.mkdir(File.join(*segments))
+  end
+
+  def touch(*segments)
+    FileUtils.touch(File.join(*segments))
+  end
+
+  def dir?(*segments)
+    Dir.exist?(File.join(*segments))
+  end
+
+  def file?(*segments)
+    File.file?(File.join(*segments))
+  end
 end
