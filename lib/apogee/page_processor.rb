@@ -7,7 +7,7 @@ module Apogee
   class PageProcessor
     attr_reader :renderer
 
-    def initialize(renderer:)
+    def initialize(renderer: PageRenderer.new)
       @renderer = renderer
     end
 
