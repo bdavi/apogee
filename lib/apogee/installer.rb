@@ -23,6 +23,17 @@ module Apogee
     def install
       copy_template_files
       gsub_site_name
+      bundle_dependencies
+    end
+
+    def validate
+      validate_destination_dir
+      validate_site_name
+    end
+
+    def copy_template_files
+      FileUtils.mkdir_p(destination_root_dir) unless Dir.exist?(destination_root_dir)
+      FileUtils.cp_r(template_dir, destination_dir)
     end
 
     def gsub_site_name
@@ -32,16 +43,19 @@ module Apogee
       end
     end
 
-    private
-
-    def copy_template_files
-      FileUtils.mkdir_p(destination_root_dir) unless Dir.exist?(destination_root_dir)
-      FileUtils.cp_r(template_dir, destination_dir)
+    def bundle_dependencies
+      Kernel.system "cd #{destination_dir}"
+      Kernel.system 'bundle install'
     end
 
-    def validate
-      validate_destination_dir
-      validate_site_name
+    private
+
+    def destination_dir
+      File.join(destination_root_dir, site_name)
+    end
+
+    def template_dir
+      File.join(File.dirname(__FILE__), 'templates', 'new_site')
     end
 
     def validate_destination_dir
@@ -56,14 +70,6 @@ module Apogee
       raise ApplicationNameInvalidError, \
             "#{site_name} is not a valid site name. Please use only " \
             'letters, numbers, underscores and dashes in the application name'
-    end
-
-    def destination_dir
-      File.join(destination_root_dir, site_name)
-    end
-
-    def template_dir
-      File.join(File.dirname(__FILE__), 'templates', 'new_site')
     end
 
     class InstallDirectoryAlreadyExistsError < StandardError; end
