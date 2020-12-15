@@ -21,7 +21,13 @@ You may create a new site from the command line with:
 $ apogee new site_name
 ```
 
-Your site is now fully configured and ready to use:
+Next, install the Ruby dependencies:
+```bash
+$ cd site_name
+$ bundle install
+```
+
+Your site is now ready to use:
 ```
 site_name
 ├── dist  <---------------- Rendered final site
@@ -44,7 +50,7 @@ site_name
 ### Build the final deployable site from your source files:
 Render your deployable site using:
 ```bash
-$ apogee build
+$ bundle exec apogee build
 ```
 
 Pages are rendered inside their respective layouts.

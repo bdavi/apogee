@@ -8,8 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Brian Davies']
   spec.email         = ['brian@disjunct.io']
 
-  spec.summary       = 'Static site generator for people in a hurry.'
-  spec.description   = 'Static site generator for people in a hurry.'
+  spec.summary       = 'Apogee is a static site generator for people in a hurry.'
+  spec.description   = 'Apogee is a static site generator for people in a hurry. ' \
+                          "Sometimes you just don't need the hassle of a full framework"
   spec.homepage      = 'https://github.com/bdavi/apogee'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.6.0')
