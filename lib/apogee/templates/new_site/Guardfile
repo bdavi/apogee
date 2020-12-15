@@ -2,7 +2,7 @@
 
 WATCH_PATTERN = %r{^src/.*}.freeze
 
-run_build = proc { system('bundle exec apogee build') }
+run_build = proc { system('apogee build') }
 
 guard :yield, { run_on_modifications: run_build } do
   watch(WATCH_PATTERN)

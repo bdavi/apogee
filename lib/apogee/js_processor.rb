@@ -20,7 +20,7 @@ module Apogee
     end
 
     def out_path
-      File.join('dist', 'scripts.js')
+      File.join('dist', 'script.js')
     end
   end
 end

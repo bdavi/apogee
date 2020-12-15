@@ -36,17 +36,17 @@ RSpec.describe Apogee::JSProcessor do
 
   describe '#process' do
     context 'when there is no js' do
-      it 'does not make dist/scripts.js' do
+      it 'does not make dist/script.js' do
         with_example_site('process_no_js') do
           described_class.new.process
 
-          expect(file?('dist', 'scripts.js')).to be false
+          expect(file?('dist', 'script.js')).to be false
         end
       end
     end
 
     context 'when there is js' do
-      it 'concatenates the js into dist/scripts.js' do
+      it 'concatenates the js into dist/script.js' do
         with_example_site('process_with_js') do
           make_file('src', 'javascript', 'abc.js', content: '123')
           mkdir('src', 'javascript', 'def')
@@ -54,7 +54,7 @@ RSpec.describe Apogee::JSProcessor do
 
           described_class.new.process
 
-          expect(file_contents('dist', 'scripts.js')).to eq "123\n456"
+          expect(file_contents('dist', 'script.js')).to eq "123\n456"
         end
       end
     end
