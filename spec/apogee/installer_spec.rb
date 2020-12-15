@@ -46,18 +46,4 @@ RSpec.describe Apogee::Installer do
       expect(index_contents).to eq "<h1>abc</h1>\n<p>Hello, World!</p>\n"
     end
   end
-
-  describe '#bundle_dependencies' do
-    it 'runs `bundle install` inside the created directory' do
-      destination_root = File.join(temp_dir, 'bundles_dependencies')
-      app_name = 'abc'
-      install_path = File.join(destination_root, app_name)
-      allow(Kernel).to receive(:system).with("cd #{install_path}").and_return(true)
-      allow(Kernel).to receive(:system).with('bundle install').and_return(true)
-      installer = described_class.new(app_name, destination_root_dir: destination_root)
-      installer.copy_template_files
-
-      installer.bundle_dependencies
-    end
-  end
 end

@@ -23,7 +23,6 @@ module Apogee
     def install
       copy_template_files
       gsub_site_name
-      bundle_dependencies
     end
 
     def validate
@@ -41,11 +40,6 @@ module Apogee
         path = File.join(destination_dir, file)
         FileHelpers.file_gsub(path, '{{site_name}}', site_name)
       end
-    end
-
-    def bundle_dependencies
-      Kernel.system "cd #{destination_dir}"
-      Kernel.system 'bundle install'
     end
 
     private

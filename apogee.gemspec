@@ -8,15 +8,15 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Brian Davies']
   spec.email         = ['brian@disjunct.io']
 
-  spec.summary       = 'Dead simple static sites'
-  spec.description   = "Sometimes you don't need the complexity of a full web framework."
+  spec.summary       = 'Static site generator for people in a hurry.'
+  spec.description   = 'Static site generator for people in a hurry.'
   spec.homepage      = 'https://github.com/bdavi/apogee'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.6.0')
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/bdavi/apogee'
-  spec.metadata['changelog_uri'] = 'https://github.com/bdavi/apogee/blob/main/CODE_OF_CONDUCT.md'
+  spec.metadata['changelog_uri'] = 'https://github.com/bdavi/apogee/blob/main/CHANGELOG.md'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
