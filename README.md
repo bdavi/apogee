@@ -81,7 +81,7 @@ Here is an example setup:
     title: 'Welcome to Example Site'
  -->
 
- <h1>Hello, World<h2>
+ <h1>Hello, World<h1>
 ```
 
 
@@ -113,7 +113,7 @@ This would yield the following page when the site is built:
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <div><h1>Hello, World<h2></div>
+        <div><h1>Hello, World<h1></div>
     </body>
 </html>
 ```
