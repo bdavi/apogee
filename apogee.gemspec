@@ -14,8 +14,6 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.6.0')
 
-  spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/bdavi/apogee'
   spec.metadata['changelog_uri'] = 'https://github.com/bdavi/apogee/blob/main/CODE_OF_CONDUCT.md'
