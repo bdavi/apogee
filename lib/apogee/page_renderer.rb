@@ -8,7 +8,9 @@ module Apogee
   class PageRenderer
     include BuilderHelpers
 
-    TOKEN_COMMENT_PATTERN = /\A<!--[^>]*-->/.freeze
+    TOKEN_COMMENT_PATTERN = /\A<!--[\w\W]*-->/.freeze
+    CSS_LINK_TAG = '<link rel="stylesheet" href="styles.css">'
+    JS_SCRIPT_TAG = '<script src="script.js"></script>'
 
     attr_reader :page_content
 
@@ -20,47 +22,46 @@ module Apogee
       end
     end
 
+    private
+
     def layout_content
-      layout(tokens['layout'])
+      load_layout(tokens['layout'])
     end
 
     def tokens
-      automatic_tokens.merge(parsed_tokens)
+      base_tokens.merge(parsed_tokens)
     end
 
-    def automatic_tokens
+    def base_tokens
       {
         'layout' => 'default',
-        'css_bundle' => css_bundle,
-        'js_bundle' => js_bundle,
+        'css_bundle' => css_tag,
+        'js_bundle' => js_tag,
         'page_content' => cleaned_page_content
       }
     end
 
     def parsed_tokens
-      doc = page_content
-              .match(TOKEN_COMMENT_PATTERN)[0]
-              .delete_prefix('<!--')
-              .delete_suffix('-->')
-              .each_line
-              .map(&:strip)
-              .join("\n")
+      parse_tokens(page_content)
+    end
 
-      YAML.safe_load(doc)
+    def parse_tokens(content)
+      YAML.safe_load(
+        content
+          .match(TOKEN_COMMENT_PATTERN)[0]
+          .delete_prefix('<!--').delete_suffix('-->')
+          .each_line.map(&:strip).join("\n")
+      )
     rescue StandardError
       {}
     end
 
-    def css_bundle
-      return '' unless css?
-
-      '<link rel="stylesheet" href="styles.css">'
+    def css_tag
+      css? ? CSS_LINK_TAG : ''
     end
 
-    def js_bundle
-      return '' unless js?
-
-      '<script src="script.js"></script>'
+    def js_tag
+      js? ? JS_SCRIPT_TAG : ''
     end
 
     def cleaned_page_content

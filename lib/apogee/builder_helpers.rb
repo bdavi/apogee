@@ -27,7 +27,7 @@ module Apogee
       Dir[File.join('src', 'javascript', '**', '*.js')]
     end
 
-    def layout(name)
+    def load_layout(name)
       IO.read(File.join('src', 'layouts', "#{name}.html"))
     end
   end
